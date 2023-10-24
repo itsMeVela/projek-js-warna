@@ -6,6 +6,7 @@ judul.style.fontSize='50px';
 // Buat element tom
 const tombol = document.createElement('button');
 const textTombol = document.createTextNode('Klik Untuk Ubah Warna');
+tombol.setAttribute('type','button');
 tombol.appendChild(textTombol);
 
 // Sisipkan tombol setelah elemen judul
@@ -22,11 +23,10 @@ judul.insertAdjacentElement('afterend', tombol);
 tombol.style.marginTop = '15px'; // Sesuaikan sesuai kebutuhan
 tombol.style.marginLeft='45%';
 tombol.style.paddingLeft='13px';
-tombol.style.paddingBottom='10px';
+tombol.style.paddingBottom='8px';
 tombol.style.borderRadius='5px';
 
 // mari kita tambahkan event pada tombol tersebut agar saat kursor di dekatkan dia berubah warna
-tombol.setAttribute('type','button');
 tombol.addEventListener('mouseenter', function(){
     //buat metodhe nya
     tombol.style.backgroundColor='pink';
@@ -41,4 +41,22 @@ tombol.addEventListener('mouseleave', function(){
 tombol.addEventListener('click', function(){
     //kita pakai fungsi toggle
     document.body.classList.toggle('ubahWarna');
-})
+});
+
+//**************************************************************************************************************** */
+// mati kita buat tombol lagi, namun kali ini, tombol jika di klik akan merubah warna secara acak
+
+//kita buat elemennya dulu
+const tAcakWarna = document.createElement('button');
+const textAcakWarna = document.createTextNode('Tombol Ubah Warna Acak');
+
+// //kita rangkai elemntnya
+tAcakWarna.appendChild(textAcakWarna);
+tAcakWarna.setAttribute('type', 'button');
+
+
+//kita tampilkan setelah tombol ubah warna
+tombol.insertAdjacentElement('afterend', tAcakWarna);
+tAcakWarna.style.marginRight='10px'; //g fungsi masih an
+
+
