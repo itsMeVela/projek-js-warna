@@ -53,14 +53,17 @@ const tAcakWarna = document.createElement('button');
 const textAcakWarna = document.createTextNode('Tombol Ubah Warna Acak');
 
 // //kita rangkai elemntnya
+
 tAcakWarna.appendChild(textAcakWarna);
 tAcakWarna.setAttribute('type', 'button');
+tAcakWarna.style.borderRadius='5px';
+tAcakWarna.style.paddingBottom='8px';
+tAcakWarna.style.paddingLeft='13px';
 
 
 //kita tampilkan setelah tombol ubah warna
 tombol.insertAdjacentElement('afterend', tAcakWarna);
 tAcakWarna.style.marginRight='10px'; //g fungsi masih an
-
 //kita buat agar setiap kali mouse mendekat dia berubah warna
 tAcakWarna.addEventListener('mouseenter', function(){
     tAcakWarna.style.backgroundColor='pink';   
@@ -72,7 +75,7 @@ tAcakWarna.addEventListener('mouseleave', function(){
 //oke mari kita buat ketika tombol di klik dia mulai merubah warna
 tAcakWarna.addEventListener('click', function(){
     //oke mari kita buat methode untuk mengacak nilai rgb, detai nya biasa liat link yt diatas
-    const r = Math.round(Math.random() *255 + 1);
+    const r = Math.round(Math.random() * 255 + 1);
     // penjelasan singkatnya math.round untuk membulatkan angka
     // math.random akan memberikan angka secara acak namun bentuknya desimal dan dengan angka acak tidak terbatas
     // berhubung rgb dimulai dari 0-255 kita bisa kalikan math.random dengan 255 dan di tambah satu. ini hasilnya masih desimal, mangkanya kita
@@ -83,5 +86,9 @@ tAcakWarna.addEventListener('click', function(){
 });
 // permasalahannya sekarang adalah, kenapa saat kita oprasikan tombol ubah warna acak, saat kita klik tombol ubah warna dia tidak merespon?
 
+//********************************************************************************************************************************************* */
+//oke marri kita buat user untuk mengatur sendiri latar belakangnya dengan menggunakan rumus rgb
+//ingat ya jika ada pembuatan lebih dari sekali, fokus selesaikan yang pertama dulu, karena yang lainnya tinggal copy pase
 
-
+//kita tangkap selidernya
+const Merah = document.querySelector('input[name=sMerah]');
