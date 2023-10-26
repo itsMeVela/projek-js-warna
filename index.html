@@ -19,6 +19,13 @@
     .merah{
       background-color: red;
     }
+    .hijau{
+      background-color: green;
+    }
+    .biru{
+      background-color: blue;
+    }
+    
   </style>
   <body>
     <div class="container">
@@ -27,9 +34,14 @@
 
       <div class="kotak merah"></div>
       <!-- karena saya ingin di atas kursornya ada kota warna maka saya akan tambahkan di style -->
-      <input type="range" name="sMerah" style="margin-left: 49%;">
-      
-      <script src="script.js"></script>
+      <input type="range" name="sMerah" style="margin-left: 49%;" title="Merah" min="0" max="255">
+       <br>
+       <div class="kotak hijau"></div>
+       <input type="range" name="sHijau" style="margin-left: 49%;" title="Hijau" min="0" max="255">
+      <br>
+      <div class="kotak biru"></div>
+       <input type="range" name="sBiru" style="margin-left: 49%;" title="Biru" min="0" max="255">
+      <script src="scrip.js"></script>
     </div>
   </body>
 </html>
