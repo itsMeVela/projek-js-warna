@@ -105,8 +105,8 @@ tAcakWarna.addEventListener("click", function () {
 // //  validator HTML yang menyarankan atau memerlukan adanya atribut title atau placeholder
 // // pada elemen formulir tertentu untuk meningkatkan aksesibilitas. lebih jelasnya bis cek cchat gpt
 
-// // mari kita buat event nya, event kali ini saya menggunakan change (untuk event geser)
-// Merah.addEventListener('change', function(){
+// // mari kita buat event nya, event kali ini saya menggunakan input (untuk event geser)
+// Merah.addEventListener('input', function(){
 //    //jangan lupa atur nilai min dan max pada html sesuai kadar rgb
 //    const r2 = Merah.value;
 //    const g2 = Hijau.value;
@@ -114,7 +114,7 @@ tAcakWarna.addEventListener("click", function () {
 //     document.body.style.backgroundColor='rgb('+ r2 +','+ g2 +','+ b2 +')';
 // });
 
-// Hijau.addEventListener('change', function(){
+// Hijau.addEventListener('input', function(){
 //     //jangan lupa atur nilai min dan max pada html sesuai kadar rgb
 //     const r2 = Merah.value;
 //     const g2 = Hijau.value;
@@ -122,7 +122,7 @@ tAcakWarna.addEventListener("click", function () {
 //      document.body.style.backgroundColor='rgb('+ r2 +','+ g2 +','+ b2 +')';
 //  });
 
-//  Biru.addEventListener('change', function(){
+//  Biru.addEventListener('input', function(){
 //     //jangan lupa atur nilai min dan max pada html sesuai kadar rgb
 //     const r2 = Merah.value;
 //     const g2 = Hijau.value;
@@ -135,21 +135,49 @@ tAcakWarna.addEventListener("click", function () {
 //disini saya tangkap slaidernya menggunakan type=range karena pada html ke 3 element memilikinya
 const range = document.querySelectorAll('input[type="range"]');
 
-// range.forEach(function(input){
-//     input.addEventListener('input', function(){
-//         //untuk menangkap valuenya, ada 2 cara yang saya tau sampai sejauh ini, pertama cara klasik seperti di bawah
-//         const r2  = range[0].value;
-//         const g2  = range[1].value;
-//         const b2  = range[2].value;
-//         document.body.style.backgroundColor = 'rgb('+ r2 +','+ g2 +','+ b2 +')';
-//     })
-// });
+// // range.forEach(function(input){
+// //     input.addEventListener('input', function(){
+// //         //untuk menangkap valuenya, ada 2 cara yang saya tau sampai sejauh ini, pertama cara klasik seperti di bawah
+// //         const r2  = range[0].value;
+// //         const g2  = range[1].value;
+// //         const b2  = range[2].value;
+// //         document.body.style.backgroundColor = 'rgb('+ r2 +','+ g2 +','+ b2 +')';
+// //     })
+// // });
 
-for(let i = 0; i<range.length; i++){
-    range[i].addEventListener('input', function(){
-        //yang kedua, dengan menangkap nilainya secara langsung seperti di bawah. sumpah si ini simpel bgt gw suka
-        const color = `rgb(${range[0].value}, ${range[1].value}, ${range[2].value})`;
-        document.body.style.backgroundColor=color;
-    });
+// for(let i = 0; i<range.length; i++){
+//     range[i].addEventListener('input', function() {
+//         //yang kedua, dengan menangkap nilainya secara langsung seperti di bawah. sumpah si ini simpel bgt gw suka
+//         const color = `rgb(${range[0].value}, ${range[1].value}, ${range[2].value})`;
+//         document.body.style.backgroundColor=color;
+//     });
     
-};
+// };
+
+// oke gw dapet ilmu baru yaitu penggunan () => atau bissa disebut  fungsi panjang nol (arrow function) untuk menggantikan syntax "function ()", untuk materi ini bisa didapatkan di js lanjutan
+
+range.forEach(function(input){
+    input.addEventListener('input', () => {
+        const color = `rgb(${range[0].value}, ${range[1].value}, ${range[2].value})`;
+        document.body.style.backgroundColor = color;
+    })
+});
+
+//************************************************************************************************************************** */
+//oke sekarang yang terakhir, saya ingin merubah warna bg ketika kursor saya gerakkan di dalam dokumen (body);
+
+//oke kita bisa gunakan ambil nilai x dan y dengan menggunakan method client x dan y
+
+// pertama kita tangkap sumbu x terlebih dahulu untuk mengatur warna merah (berhubung kita hanya menggunakan 2 warna saja bisa pilih dari ke 3 warna tersebut)
+
+//kita tangkap element yang kita maksud
+// biasanya kan kita menggunakan function anonim, namun untuk mengakses method client, funsi tersebut harus memuat parameter evnt / e didalamnya
+document.addEventListener('mousemove', function(event){
+    //oke disini saya akan menjelaskan menggunakan window.innerWidth/Hight
+    // console.log(innerWidth);//untuk ngecek aja
+    //untuk melihat seberapa lebar layar window user
+ const posX = Math.round((event.clientX/window.innerWidth)*255);
+ const posY = Math.round((event.clientY/window.innerHeight)*255);
+
+ document.body.style.backgroundColor='rgb('+ posX+', '+ posY+', 100)';
+})
